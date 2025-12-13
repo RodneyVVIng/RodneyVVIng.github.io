@@ -1,186 +1,459 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Te Amo Elizabeth</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #ffeef5;
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio & CV | [TU NOMBRE]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES DE COLOR (CAMBIA ESTO PARA PERSONALIZAR) --- */
+        :root {
+            --primary-color: #2563eb; /* Azul moderno */
+            --secondary-color: #1e293b; /* Gris oscuro / Azul noche */
+            --text-color: #475569; /* Gris texto */
+            --bg-color: #f8fafc; /* Fondo muy claro */
+            --white: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
 
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
+        /* --- RESET Y ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .center-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #ff69b4;
-      border: none;
-      border-radius: 50px;
-      width: 70px;
-      height: 70px;
-      cursor: pointer;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .heart {
-      width: 30px;
-      height: 30px;
-      background-color: #ffc0cb;
-      position: relative;
-      transform: rotate(-45deg);
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    .heart::before, .heart::after {
-      content: "";
-      width: 30px;
-      height: 30px;
-      background-color: #ffc0cb;
-      border-radius: 50%;
-      position: absolute;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .heart::before { top: -15px; left: 0; }
-    .heart::after { top: 0; left: 15px; }
+        ul {
+            list-style: none;
+        }
 
-    .message {
-      position: absolute;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #d63384;
-      z-index: 1;
-      animation: glow 1.5s infinite alternate, floatUp 4s ease-out forwards;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-      opacity: 0;
-    }
+        /* --- NAVEGACIÓN --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--card-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-    @keyframes floatUp {
-      0% { opacity: 0; transform: translate(-50%, -40%); }
-      20% { opacity: 1; transform: translate(-50%, -50%); }
-      100% { opacity: 0; transform: translate(-50%, -120%); }
-    }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
 
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493; }
-      100% { text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4; }
-    }
-  </style>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION (INICIO) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(255,255,255,0) 100%);
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- SOBRE MÍ --- */
+        .about-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            flex: 1;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        /* --- EXPERIENCIA Y EDUCACIÓN (TIMELINE) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- PORTAFOLIO / PROYECTOS --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 200px;
+            background-color: #ddd; /* Placeholder color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-tags span {
+            background-color: #e2e8f0;
+            color: var(--secondary-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        /* --- HABILIDADES (SKILLS) --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            font-weight: 600;
+            color: var(--secondary-color);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* En un caso real, añadirías un menú hamburguesa */
+            .about-container { flex-direction: column; }
+            .about-img { max-width: 300px; margin: 0 auto; }
+        }
+    </style>
 </head>
 <body>
-  <canvas id="cascade"></canvas>
-  <button class="center-button" onclick="showMessage(event)">
-    <div class="heart"></div>
-  </button>
 
-  <audio id="bg-music" loop autoplay>
-    <source src="i-wanna-be-yours.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
+    <header>
+        <nav>
+            <div class="logo">[TUS INICIALES]</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <script>
-    // Configuración del fondo de emojis y textos
-    const canvas = document.getElementById('cascade');
-    const ctx = canvas.getContext('2d');
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Hola, soy [TU NOMBRE]</h1>
+            <h2>[TU PUESTO / PROFESIÓN]</h2>
+            <p>Especialista en crear soluciones eficientes y creativas.</p>
+            
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <br>
+            <a href="#portafolio" class="btn">Ver mi trabajo</a>
+            <a href="mailto:tuemail@ejemplo.com" class="btn" style="background-color: var(--secondary-color); margin-left: 10px;">Contáctame</a>
+        </div>
+    </section>
 
-    const elements = ["🩷", "💖", "💗", "💕", "TE AMO", "TE AMO ELIZABETH"];
-    const hearts = [];
+    <section id="sobre-mi">
+        <h2 class="section-title">Sobre Mí</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="https://via.placeholder.com/400x400" alt="Foto de perfil">
+            </div>
+            <div class="about-text">
+                <p>
+                    ¡Hola! Soy un profesional apasionado por [TU INDUSTRIA]. Con más de [X] años de experiencia, me dedico a [TU MISIÓN PRINCIPAL]. 
+                </p>
+                <br>
+                <p>
+                    Me caracterizo por ser [CUALIDAD 1], [CUALIDAD 2] y [CUALIDAD 3]. Siempre estoy buscando nuevos retos y oportunidades para aprender y crecer profesionalmente.
+                </p>
+                <br>
+                <h3>Habilidades Principales</h3>
+                <br>
+                <div class="skills-grid" style="justify-content: start;">
+                    <div class="skill-item">Habilidad 1</div>
+                    <div class="skill-item">Habilidad 2</div>
+                    <div class="skill-item">Habilidad 3</div>
+                    <div class="skill-item">Inglés (B2)</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    for (let i = 0; i < 50; i++) {
-      hearts.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size: 16 + Math.random() * 10,
-        speed: 1 + Math.random() * 2,
-        alpha: 0.6 + Math.random() * 0.4,
-        text: elements[Math.floor(Math.random() * elements.length)]
-      });
-    }
+    <section id="experiencia">
+        <h2 class="section-title">Trayectoria Profesional</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">2021 - Presente</span>
+                <h3 class="timeline-title">Puesto de Trabajo Actual</h3>
+                <span class="timeline-company">Nombre de la Empresa</span>
+                <p>Descripción breve de tus responsabilidades y logros principales en este puesto. Enfócate en resultados cuantificables.</p>
+            </div>
 
-    function drawCascade() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.font = "20px Arial";
-      hearts.forEach(h => {
-        ctx.fillStyle = `rgba(255, 105, 180, ${h.alpha})`;
-        ctx.fillText(h.text, h.x, h.y);
-        h.y += h.speed;
-        if (h.y > height) {
-          h.y = -20;
-          h.x = Math.random() * width;
-        }
-      });
-      requestAnimationFrame(drawCascade);
-    }
+            <div class="timeline-item">
+                <span class="timeline-date">2018 - 2021</span>
+                <h3 class="timeline-title">Puesto Anterior</h3>
+                <span class="timeline-company">Nombre de la Empresa Anterior</span>
+                <p>Descripción de tus funciones. Lideré el proyecto X logrando una mejora del Y% en la productividad.</p>
+            </div>
 
-    drawCascade();
-    window.addEventListener('resize', () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    });
+             <div class="timeline-item" style="border-left-color: var(--secondary-color);">
+                <span class="timeline-date" style="color: var(--secondary-color);">2014 - 2018</span>
+                <h3 class="timeline-title">Título Universitario / Grado</h3>
+                <span class="timeline-company">Nombre de la Universidad</span>
+                <p>Mención honorífica / Especialidad en X.</p>
+            </div>
+        </div>
+    </section>
 
-    // Mensajes románticos con efecto de brillo
-    const messages = [
-      "Te amo Elizabeth", "Eres mi todo", "Mi muñequita hermosa",
-      "Eres tan bonita", "Mi amor eterno", "Mi destino eres tú",
-      "Cada día te amo más", "Mi única y verdadera", "Mi reina adorada",
-      "Tú haces mi mundo más bonito", "Me haces tan feliz",
-      "Te quiero mucho, chikis", "Te pienso siempre", "Mi corazón es tuyo"
-    ];
+    <section id="portafolio">
+        <h2 class="section-title">Mis Proyectos</h2>
+        <div class="portfolio-grid">
+            
+            <article class="project-card">
+                <div class="project-img">
+                    <img src="https://via.placeholder.com/600x400" alt="Proyecto 1">
+                </div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto A</h3>
+                    <p style="font-size: 0.9rem; margin: 10px 0;">Breve descripción de lo que hiciste y qué tecnologías o herramientas usaste.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
+                    </div>
+                </div>
+            </article>
 
-    function showMessage(event) {
-      event.preventDefault();
-      if (navigator.vibrate) navigator.vibrate([100]);
+            <article class="project-card">
+                <div class="project-img">
+                    <img src="https://via.placeholder.com/600x400" alt="Proyecto 2">
+                </div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto B</h3>
+                    <p style="font-size: 0.9rem; margin: 10px 0;">Explicación de un logro importante o un caso de estudio resuelto.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Data</span>
+                    </div>
+                </div>
+            </article>
 
-      const msg = document.createElement('div');
-      msg.classList.add('message');
-      msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+            <article class="project-card">
+                <div class="project-img">
+                    <img src="https://via.placeholder.com/600x400" alt="Proyecto 3">
+                </div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto C</h3>
+                    <p style="font-size: 0.9rem; margin: 10px 0;">Diseño o estrategia creada para un cliente específico.</p>
+                    <div class="project-tags">
+                        <span>Figma</span>
+                        <span>UX/UI</span>
+                    </div>
+                </div>
+            </article>
 
-      const btn = document.querySelector('.center-button');
-      const btnRect = btn.getBoundingClientRect();
+        </div>
+    </section>
 
-      const above = btnRect.top - 50 - Math.random() * 100;
-      const below = btnRect.bottom + 50 + Math.random() * 100;
+    <footer id="contacto">
+        <h2>¿Trabajamos juntos?</h2>
+        <p style="margin: 1rem 0;">Estoy disponible para nuevos proyectos y oportunidades.</p>
+        
+        <div class="social-icons" style="margin-bottom: 2rem;">
+            <a href="mailto:tuemail@ejemplo.com"><i class="fas fa-envelope"></i> tuemail@ejemplo.com</a>
+            <br><br>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
 
-      const y = Math.random() < 0.5 ? above : below;
-      const x = btnRect.left + btnRect.width / 2 + (Math.random() - 0.5) * 120;
+        <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2023 [TU NOMBRE]. Todos los derechos reservados.</p>
+    </footer>
 
-      msg.style.left = `${x}px`;
-      msg.style.top = `${y}px`;
-
-      document.body.appendChild(msg);
-
-      setTimeout(() => { msg.remove(); }, 4000);
-    }
-
-    // Autoplay fix para móviles
-    window.addEventListener('click', () => {
-      const music = document.getElementById('bg-music');
-      if (music.paused) music.play().catch(() => {});
-    }, { once: true });
-  </script>
 </body>
 </html>
