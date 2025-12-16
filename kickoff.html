@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadro Sinóptico - PMI KICKOFF™</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Estructura del Cuadro Sinóptico */
+        .chart-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        /* Cajas de texto */
+        .box {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #0056D2; /* Azul PMI */
+            max-width: 250px;
+            position: relative;
+        }
+
+        .main-title {
+            background-color: #002e6d;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+        }
+
+        .category {
+            font-weight: bold;
+            color: #0056D2;
+            margin-bottom: 5px;
+        }
+
+        /* Columnas y Conexiones */
+        .level {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            margin-left: 40px; /* Espacio para las líneas */
+            position: relative;
+        }
+
+        /* Dibujar las líneas conectores (Llaves visuales) */
+        .level::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 20px; /* Ajuste para conectar desde el centro del padre */
+            bottom: 20px;
+            width: 2px;
+            background-color: #ccc;
+        }
+        
+        /* Líneas horizontales hacia los hijos */
+        .node-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .node-wrapper::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        /* Listas dentro de las cajas */
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Ajustes específicos para el nodo raíz */
+        .root-level {
+            margin-left: 0;
+        }
+        .root-level::before {
+            display: none;
+        }
+        
+        /* Conector especial desde el título principal */
+        .root-wrapper {
+            position: relative;
+        }
+        .root-wrapper::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            width: 40px;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="chart-container">
+        
+        <div class="level root-level">
+            <div class="box main-title root-wrapper">
+                CURSO PMI<br>KICKOFF™<br>(45 Min)
+            </div>
+        </div>
+
+        <div class="level">
+            
+            <div class="node-wrapper">
+                <div class="box">
+                    <div class="category">Enfoque Predictivo (Cascada)</div>
+                    <small><i>Alcance fijo y claro</i></small>
+                    <div class="level">
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>1. Inicio</strong>
+                                <ul>
+                                    <li>Project Charter</li>
+                                    <li>Interesados</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>2. Planificación</strong>
+                                <ul>
+                                    <li>WBS (Desglose)</li>
+                                    <li>Cronograma</li>
+                                    <li>Riesgos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>3. Ejecución</strong>
+                                <ul>
+                                    <li>Reportes de Estado</li>
+                                    <li>Control de Calidad</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>4. Cierre</strong>
+                                <ul>
+                                    <li>Entrega final</li>
+                                    <li>Lecciones Aprendidas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="node-wrapper">
+                <div class="box" style="border-left-color: #e67e22;">
+                    <div class="category" style="color: #e67e22;">Enfoque Adaptativo (Ágil)</div>
+                    <small><i>Alcance flexible</i></small>
+                    <div class="level">
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>1. Visión e Inicio</strong>
+                                <ul>
+                                    <li>Visión del Producto</li>
+                                    <li>Roadmap</li>
+                                    <li>Equipo Ágil</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>2. Backlog</strong>
+                                <ul>
+                                    <li>Historias de Usuario</li>
+                                    <li>Priorización</li>
+                                    <li>Estimación</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>3. Iteraciones</strong>
+                                <ul>
+                                    <li>Sprint Planning</li>
+                                    <li>Daily Stand-up</li>
+                                    <li>Tablero Kanban</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="node-wrapper">
+                            <div class="box">
+                                <strong>4. Revisión</strong>
+                                <ul>
+                                    <li>Sprint Review (Demo)</li>
+                                    <li>Retrospectiva</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
